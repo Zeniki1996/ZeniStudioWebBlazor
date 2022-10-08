@@ -9,36 +9,43 @@ namespace ZeniStudioWebBlazor.Servicios
 {
     public class UsuarioService 
     {
-         private ApplicationDbContext _db;
+         private UserManager<IdentityUser> manager;
+        private ApplicationDbContext context;
 
-        public UsuarioService(ApplicationDbContext context)
+
+        public UsuarioService(UserManager<IdentityUser> manager, ApplicationDbContext context)
         {
-            _db = context;
+            this.manager = manager;
+            this.context = context;
         }
 
-        public void DeleteUsuarios(string id)
+
+        public async Task DeleteUsuarios(string id)
         {
-            var borrar =GetUsuarios(id);
-            _db.usuarioList.Remove(borrar);
+            var borrar = await GetUsuarioPorId(id);
+            context.Remove(borrar);
+            context.SaveChanges();
         }
 
         public IEnumerable<IdentityUser> GetAllUsuarios()
         {
-            return _db.Users.ToList();
+            return manager.Users;
         }
 
-        public Usuarios GetUsuarios(string id)
+
+        public async Task <IdentityUser> GetUsuarioPorId(string id)
         {
-            
-            return _db.usuarioList.FirstOrDefault(u => u.Id == id);
+            return await manager.FindByIdAsync(id);
         }
 
-        public void SaveUsuarios(Usuarios usuarios)
-        {
+        //public async Task CrearUsuario(IdentityUser usuario)
+        //{
+        //    usuario.PhoneNumber = "0000000000";
+        //    usuario.TwoFactorEnabled = false;
+        //    usuario.EmailConfirmed = true;
+        //    usuario.PhoneNumberConfirmed = true;   
 
-            var state = usuarios.Id == "" ? EntityState.Added : EntityState.Modified;
-            _db.Entry(usuarios).State = state;
-
-        }
+        //    await manager.CreateAsync(usuario, usuario.PasswordHash);
+        //}
     }
 }

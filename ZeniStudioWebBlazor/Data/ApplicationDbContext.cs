@@ -10,6 +10,5 @@ namespace ZeniStudioWebBlazor.Data
             : base(options)
         {
         }
-        public DbSet<Usuarios> usuarioList { get; set; }
     }
 }

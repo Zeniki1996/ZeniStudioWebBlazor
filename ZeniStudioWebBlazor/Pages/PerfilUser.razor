@@ -1,10 +1,43 @@
 ﻿@page "/Perfiluser"
+@using ZeniStudioWebBlazor.Servicios
 @attribute [Authorize]
+@inject UsuarioService servUsuario 
 <PageTitle>Perfil</PageTitle>
 
 <h1>Usualrio</h1>
 <h3>PerfilUser</h3>
 
-@code {
+<table class="table">
+        <thead>
+            <tr>
+         <th>Usuario</th>
+         <th>Email</th>
+         <th></th>
 
+            </tr>
+        </thead>
+
+    <tbody>
+            @foreach (var user in servUsuario.GetAllUsuarios())
+            {
+                string id = user.Id;
+        <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <a @onclick="@(() => @Borrar(id))" href="/Perfiluser">Borrar</a>
+                    </td>
+        </tr>
+            }
+    </tbody>
+
+
+</table>
+
+@code {
+    private async Task Borrar(string id)
+    {
+       await servUsuario.DeleteUsuarios(id);
+        StateHasChanged();
+    }
 }
