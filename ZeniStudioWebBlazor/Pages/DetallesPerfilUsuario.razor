@@ -1,6 +1,8 @@
 ﻿@page "/detallesUsuario"
 @using BlazorCrud.Model
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using ZeniStudioWebBlazor.Interfaz
+@inject IUsuarioService UsuarioService 
 @attribute [Authorize]
 
 <h3>Perfil Usuario</h3>
@@ -20,7 +22,7 @@
         </tr>
         <tr>
             <td colspan="2" style ="text-align:center">
-                <input type="submit" value="Save" @onclick="SaveUser" />
+                <input type="submit" value="Save" @onclick="SaveUsuarios" />
                 <input type="button" value="Cancel" @onclick="CancelUser" />
 
             </td>
@@ -34,9 +36,9 @@
         {
         
          }
-         protected async Task SaveUser ()
+    protected async Task SaveUsuarios()
         {
-        
+        await UsuarioService.SaveUsuarios(usuario);
          }
     
 }
