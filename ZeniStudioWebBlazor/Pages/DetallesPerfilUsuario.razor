@@ -1,0 +1,42 @@
+﻿@page "/detallesUsuario"
+@using BlazorCrud.Model
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@attribute [Authorize]
+
+<h3>Perfil Usuario</h3>
+<EditForm Model ="@usuario">
+    <table class="table">
+        <tr>
+            <td>Nombre:</td>
+            <td><input type="text" @bind="usuario.UserName"/> </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" @bind="usuario.Email"/> </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" @bind="usuario.PasswordHash"/> </td>
+        </tr>
+        <tr>
+            <td colspan="2" style ="text-align:center">
+                <input type="submit" value="Save" @onclick="SaveUser" />
+                <input type="button" value="Cancel" @onclick="CancelUser" />
+
+            </td>
+        </tr>
+
+    </table>
+</EditForm>
+@code {
+    Usuarios usuario = new Usuarios();
+    protected void CancelUser ()
+        {
+        
+         }
+         protected async Task SaveUser ()
+        {
+        
+         }
+    
+}
