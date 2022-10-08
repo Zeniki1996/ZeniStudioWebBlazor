@@ -4,17 +4,22 @@
 @using ZeniStudioWebBlazor.Interfaz
 @using ZeniStudioWebBlazor.Servicios
 @inject UsuarioService UsuarioService 
+@inject NavigationManager nav
 @attribute [Authorize]
 
 <h3>Perfil Usuario</h3>
 <EditForm Model ="@usuario">
     <table class="table">
+        
         <tr>
-            <td>Nombre:</td>
+            <td>Nombre:: @usuario.UserName</td>
+        </tr>
+        <tr>
+            <td>Contraseña:</td>
             <td><input type="text" @bind="usuario.PasswordHash"/> </td>
         </tr>
         <tr>
-            <td>Email:</td>
+            <td>Teléfono:</td>
             <td><input type="text" @bind="usuario.PhoneNumber"/> </td>
         </tr>
      
@@ -28,26 +33,39 @@
 
     </table>
 </EditForm>
+
+@if (guardado)
+{
+    <div class="alert alert-success">
+        Guardado!
+    </div>
+}
+
 @code {
-
     [Parameter]
-    public int Id{ get; set; }
+    public string Id { get; set; } = "";
 
-    IdentityUser usuario = new ();
-    protected override Task OnInitializedAsync()
+    public bool guardado = false;
+
+    IdentityUser? usuario = null;
+    protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
 
-
-        return base.OnInitializedAsync();
-    }
-
-    protected void CancelUser ()
-    {
+        guardado = false;
+        if (Id != "")
+            usuario = await UsuarioService.GetUsuarioPorId(Id);
 
     }
     protected async Task SaveUsuarios()
     {
-       // await UsuarioService.CrearUsuario(usuario);
+        if (usuario is null)
+            return;
+
+        await UsuarioService.Guardar(usuario);
+
+        usuario.PasswordHash = "";
+        guardado = true;
     }
     
 }

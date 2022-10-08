@@ -35,7 +35,16 @@ namespace ZeniStudioWebBlazor.Servicios
 
         public async Task <IdentityUser> GetUsuarioPorId(string id)
         {
-            return await manager.FindByIdAsync(id);
+            var usuario = await manager.FindByIdAsync(id);
+            usuario.PasswordHash = string.Empty;
+            return usuario;
+        }
+
+        public async Task Guardar(IdentityUser usuario)
+        {
+            usuario.PasswordHash = manager.PasswordHasher.HashPassword(usuario, usuario.PasswordHash);
+            context.Entry(usuario).State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
 
         //public async Task CrearUsuario(IdentityUser usuario)

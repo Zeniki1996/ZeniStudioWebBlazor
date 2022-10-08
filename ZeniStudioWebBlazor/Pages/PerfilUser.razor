@@ -25,7 +25,8 @@
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
                 <td>
-                    <a @onclick="@(() => @Borrar(id))" href="/Perfiluser">Borrar</a>
+                    <a @onclick="@(() => @Borrar(id))" href="/Perfiluser">Borrar</a> |
+                    <a href=@($"/detallesUsuario/{user.Id}")>Editar</a>
                     </td>
         </tr>
             }
@@ -37,7 +38,9 @@
 @code {
     private async Task Borrar(string id)
     {
-       await servUsuario.DeleteUsuarios(id);
+        await servUsuario.DeleteUsuarios(id);
         StateHasChanged();
+
+     
     }
 }
