@@ -2,39 +2,43 @@
 using BlazorCrud.Data.Repositorio;
 using ZeniStudioWebBlazor.Interfaz;
 using ZeniStudioWebBlazor.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ZeniStudioWebBlazor.Servicios
 {
-    public class UsuarioService : IUsuarioService
+    public class UsuarioService 
     {
-        private readonly SqlCpnfiguration _configuration;
-        private IUsuarioRepositorio _usuarioRepositorio;
-        public UsuarioService(SqlCpnfiguration configuration)
+         private ApplicationDbContext _db;
+
+        public UsuarioService(ApplicationDbContext context)
         {
-            _configuration = configuration;
-            _usuarioRepositorio = new UsuarioRepositorio(configuration.ConnectionString);
-        }
-        public Task<bool> DeleteUsuarios(int id)
-        {
-            throw new NotImplementedException();
+            _db = context;
         }
 
-        public Task<IEnumerable<Usuarios>> GetAllUsuarios()
+        public void DeleteUsuarios(string id)
         {
-            throw new NotImplementedException();
+            var borrar =GetUsuarios(id);
+            _db.usuarioList.Remove(borrar);
         }
 
-        public Task<Usuarios> GetUsuarios(int id)
+        public IEnumerable<IdentityUser> GetAllUsuarios()
         {
-            throw new NotImplementedException();
+            return _db.Users.ToList();
         }
 
-        public Task<bool> SaveUsuarios(Usuarios usuarios)
+        public Usuarios GetUsuarios(string id)
         {
-            if (usuarios.Id == "null")
-                return _usuarioRepositorio.InsertUsuarios(usuarios);
-            else
-                return null;
+            
+            return _db.usuarioList.FirstOrDefault(u => u.Id == id);
+        }
+
+        public void SaveUsuarios(Usuarios usuarios)
+        {
+
+            var state = usuarios.Id == "" ? EntityState.Added : EntityState.Modified;
+            _db.Entry(usuarios).State = state;
+
         }
     }
 }

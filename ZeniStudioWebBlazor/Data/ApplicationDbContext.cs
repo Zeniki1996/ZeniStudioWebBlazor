@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BlazorCrud.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ZeniStudioWebBlazor.Data
@@ -9,5 +10,6 @@ namespace ZeniStudioWebBlazor.Data
             : base(options)
         {
         }
+        public DbSet<Usuarios> usuarioList { get; set; }
     }
 }
