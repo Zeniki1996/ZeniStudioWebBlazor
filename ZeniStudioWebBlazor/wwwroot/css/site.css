@@ -9,13 +9,12 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #fff;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #272626;
 }
 
 .content {
