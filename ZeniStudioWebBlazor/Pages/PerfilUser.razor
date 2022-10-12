@@ -2,10 +2,10 @@
 @using ZeniStudioWebBlazor.Servicios
 @attribute [Authorize]
 @inject UsuarioService servUsuario 
-<PageTitle>Perfil</PageTitle>
+<PageTitle>Lista User</PageTitle>
 
-<h1>Usualrio</h1>
-<h3>PerfilUser</h3>
+<h1>Zeni Studio</h1>
+<h3>Lista de usuarios</h3>
 
 <table class="table">
         <thead>
@@ -25,7 +25,7 @@
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
                 <td>
-                    <a @onclick="@(() => @Borrar(id))" href="/Perfiluser">Borrar</a> |
+                    <a @onclick="@(() => @Borrar(id))" href="/Perfiluser" style="background-color=#111">Borrar</a> |
                     <a href=@($"/detallesUsuario/{user.Id}")>Editar</a>
                     </td>
         </tr>

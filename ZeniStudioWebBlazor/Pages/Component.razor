@@ -1,0 +1,38 @@
+﻿@page "/Registro"
+<div class="container">
+
+    <main role="main" class="pb-1">
+
+        <h1>Crear cuenta</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form id="registerForm" method="post" action="/Identity/Account/Register" novalidate="novalidate">
+                    <h2>Crear una nueva cuenta </h2>
+                    <hr>
+
+                    <div class="form-floating">
+                        <input class="form-control" autocomplete="username" aria-required="true" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="">
+                        <label for="Input_Email">Email</label>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" autocomplete="new-password" aria-required="true" type="password" data-val="true" data-val-length="The Password must be at least 6 and at max 100 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Input_Password" maxlength="100" name="Input.Password">
+                        <label for="Input_Password">Contraseña</label>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" autocomplete="new-password" aria-required="true" type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="Input_ConfirmPassword" name="Input.ConfirmPassword">
+                        <label for="Input_ConfirmPassword">Confirmar Contraseña</label>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword" data-valmsg-replace="true"></span>
+                    </div>
+                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrar</button>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8EGr1CPzgxpLk27ModSssC0ZOOFWh2EWeDPokRiIXhbi7AN5P4uPT6_TQNkqypjp2nWe-GwIbeKXc-lefniZjjUs73iLAz8FhBO0Gfh_o5Cs7tLbnox3mjklZ1N9WIdQhaNPlAK9KZWva26e2bES-hM">
+                </form>
+            </div>
+          
+        </div>
+
+
+    </main>
+</div>
