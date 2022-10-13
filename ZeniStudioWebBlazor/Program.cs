@@ -11,9 +11,10 @@ using ZeniStudioWebBlazor.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
-builder.Services.AddScoped< UsuarioService>();
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddScoped<UsuarioService>();// YO AGREGUÉ 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");// YO AGREGUÉ 
 //.Services.AddSingleton(connectionString);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -24,6 +25,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+
 
 var app = builder.Build();
 
@@ -53,3 +56,5 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+app.MapRazorPages();
+app.MapDefaultControllerRoute();
