@@ -1,6 +1,6 @@
 ﻿using BlazorCrud.Model;
 
-namespace ZeniStudioWebBlazor.Interfaz
+/*namespace ZeniStudioWebBlazor.Interfaz
 {
     public interface IUsuarioService
     {
@@ -10,4 +10,4 @@ namespace ZeniStudioWebBlazor.Interfaz
         Task<bool> SaveUsuarios(Usuarios usuarios);
 
     }
-}
+}*/
