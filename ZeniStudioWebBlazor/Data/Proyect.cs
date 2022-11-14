@@ -1,8 +1,17 @@
-﻿namespace ZeniStudioWebBlazor.Data
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using ZeniStudioWebBlazor.Pages;
+
+namespace ZeniStudioWebBlazor.Data
 {
+    [Table ("Proyecto")]
     public class Proyect
     {
-        public string CodigoProyeto { get; set; }
+
+        // public int idProyect { get; set; }
+        [Key]
+        public string CodigoProyecto { get; set; } 
         public string nombre { get; set; }
         public int idCliente { get; set; }
         public int idEstado { get; set; }
@@ -13,4 +22,5 @@
         public string? razonCancelacion { get; set; }
 
     }
+  
 }

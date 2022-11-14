@@ -1,6 +1,7 @@
 ﻿using BlazorCrud.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ZeniStudioWebBlazor.Data;
 
 namespace ZeniStudioWebBlazor.Data
 {
@@ -10,5 +11,7 @@ namespace ZeniStudioWebBlazor.Data
             : base(options)
         {
         }
+        public DbSet<ZeniStudioWebBlazor.Data.Proyect> Proyect { get; set; }
+      
     }
 }

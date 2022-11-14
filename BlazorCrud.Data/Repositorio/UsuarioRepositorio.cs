@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BlazorCrud.Data.Repositorio
 {
-    public class UsuarioRepositorio : IUsuarioRepositorio
+    public class UsuarioRepositorio //: IUsuarioRepositorio
     {
-        private string ConnectionString;
+        /*private string ConnectionString;
         public UsuarioRepositorio(string connectionString)
         {
             ConnectionString = connectionString;
@@ -49,6 +49,6 @@ namespace BlazorCrud.Data.Repositorio
         public Task<bool> UpdateUsuarios(Usuarios usuarios)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

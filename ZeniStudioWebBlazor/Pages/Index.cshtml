@@ -1,0 +1,90 @@
+﻿@page "/Proyecto"
+@using Microsoft.AspNetCore.Authorization
+@using ZeniStudioWebBlazor.Servicios
+
+@attribute [Authorize]
+@inject ProyectService proyecserv
+
+@model ZeniStudioWebBlazor.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Proyecto";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].CodigoProyecto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].idCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].idEstado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].prioridad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].fechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].fechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].fechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proyect[0].razonCancelacion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Proyect) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoProyecto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prioridad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.razonCancelacion)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CodigoProyecto">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CodigoProyecto">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CodigoProyecto">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

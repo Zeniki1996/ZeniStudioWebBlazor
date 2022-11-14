@@ -1,0 +1,98 @@
+﻿@page "/Proyecto"
+@using Microsoft.AspNetCore.Authorization
+@using ZeniStudioWebBlazor.Data
+@using ZeniStudioWebBlazor.Servicios
+
+@attribute [Authorize]
+@inject ProyectService proyecserv
+
+<h3>Proyecto</h3>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                CodigoProyecto
+            </th>
+            <th>
+               Nombre
+            </th>
+            <th>
+                Id Cliente
+            </th>
+            <th>
+               Id Estado
+            </th>
+            <th>
+                Prioridad
+            </th>
+            <th>
+                Fecha Creación
+            </th>
+            <th>
+                Fecha Inicio
+            </th>
+            <th>
+               Fecha Fin
+            </th>
+            <th>
+                Razon de cancelación
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in listaProyect)
+        {
+            <tr>
+                <td>
+                    @item.CodigoProyecto
+                </td>
+                <td>
+                    @item.nombre
+                </td>
+                <td>
+                    @item.idCliente
+                </td>
+                <td>
+                    @item.idEstado
+                </td>
+                <td>
+                    @item.prioridad
+                </td>
+                <td>
+                    @item.fechaCreacion
+                </td>
+                <td>
+                    @item.fechaInicio
+                </td>
+                <td>
+                    @item.fechaFin
+                </td>
+                <td>
+                    @item.razonCancelacion
+                </td>
+                <td>-
+                   @* <a href=@($"/detallesUsuario/{user.Id}")>Editar</a>
+                   
+                    <a asp-page="./Delete" asp-route-id="@item.CodigoProyecto">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code{
+    List<Proyect> listaProyect;
+    protected override async Task OnInitializedAsync()
+    {
+    
+        await base.OnInitializedAsync();
+
+        listaProyect = proyecserv.GetAllProyecto();
+    }
+}

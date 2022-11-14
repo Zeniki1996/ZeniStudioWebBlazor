@@ -1,0 +1,75 @@
+﻿@page
+@model ZeniStudioWebBlazor.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Proyect</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Proyect.idProyect" />
+            <div class="form-group">
+                <label asp-for="Proyect.CodigoProyecto" class="control-label"></label>
+                <input asp-for="Proyect.CodigoProyecto" class="form-control" />
+                <span asp-validation-for="Proyect.CodigoProyecto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.nombre" class="control-label"></label>
+                <input asp-for="Proyect.nombre" class="form-control" />
+                <span asp-validation-for="Proyect.nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.idCliente" class="control-label"></label>
+                <input asp-for="Proyect.idCliente" class="form-control" />
+                <span asp-validation-for="Proyect.idCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.idEstado" class="control-label"></label>
+                <input asp-for="Proyect.idEstado" class="form-control" />
+                <span asp-validation-for="Proyect.idEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.prioridad" class="control-label"></label>
+                <input asp-for="Proyect.prioridad" class="form-control" />
+                <span asp-validation-for="Proyect.prioridad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.fechaCreacion" class="control-label"></label>
+                <input asp-for="Proyect.fechaCreacion" class="form-control" />
+                <span asp-validation-for="Proyect.fechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.fechaInicio" class="control-label"></label>
+                <input asp-for="Proyect.fechaInicio" class="form-control" />
+                <span asp-validation-for="Proyect.fechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.fechaFin" class="control-label"></label>
+                <input asp-for="Proyect.fechaFin" class="form-control" />
+                <span asp-validation-for="Proyect.fechaFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proyect.razonCancelacion" class="control-label"></label>
+                <input asp-for="Proyect.razonCancelacion" class="form-control" />
+                <span asp-validation-for="Proyect.razonCancelacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

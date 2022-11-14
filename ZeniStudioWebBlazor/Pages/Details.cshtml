@@ -1,0 +1,73 @@
+﻿@page
+@model ZeniStudioWebBlazor.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Proyect</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.CodigoProyecto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.CodigoProyecto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.idCliente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.idCliente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.idEstado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.idEstado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.prioridad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.prioridad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.fechaCreacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.fechaCreacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.fechaInicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.fechaInicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.fechaFin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.fechaFin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Proyect.razonCancelacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Proyect.razonCancelacion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Proyect?.CodigoProyecto">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

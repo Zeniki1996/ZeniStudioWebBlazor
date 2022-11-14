@@ -1,7 +1,7 @@
 ﻿@page "/detallesUsuario/{Id}"
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
-@using ZeniStudioWebBlazor.Interfaz
+
 @using ZeniStudioWebBlazor.Servicios
 @inject UsuarioService UsuarioService 
 @inject NavigationManager nav
@@ -12,7 +12,11 @@
     <table class="table">
         
         <tr>
-            <td>Nombre:: @usuario.UserName</td>
+            <td>Email: @usuario.UserName</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td><input type="text" @bind="usuario.UserName" /> </td>
         </tr>
         <tr>
             <td>Contraseña:</td>
@@ -22,6 +26,7 @@
             <td>Teléfono:</td>
             <td><input type="text" @bind="usuario.PhoneNumber"/> </td>
         </tr>
+  
      
         <tr>
             <td colspan="2" style ="text-align:center">

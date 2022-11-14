@@ -1,6 +1,6 @@
 ﻿using BlazorCrud.Model;
 using BlazorCrud.Data.Repositorio;
-using ZeniStudioWebBlazor.Interfaz;
+
 using ZeniStudioWebBlazor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
