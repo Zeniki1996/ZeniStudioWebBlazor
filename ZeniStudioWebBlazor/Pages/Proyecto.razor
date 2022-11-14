@@ -9,7 +9,8 @@
 <h3>Proyecto</h3>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a href=@($"//create/")>Create New</a>
+    
 </p>
 <table class="table">
     <thead>
@@ -76,9 +77,9 @@
                     @item.razonCancelacion
                 </td>
                 <td>-
-                   @* <a href=@($"/detallesUsuario/{user.Id}")>Editar</a>
-                   
-                    <a asp-page="./Delete" asp-route-id="@item.CodigoProyecto">Delete</a>*@
+                    <a href=@($"/EditProyect/{item.CodigoProyecto}")>Editar</a>
+                    <a @onclick="@(() => @Borrar(item.CodigoProyecto))" href="/Perfiluser" style="background-color=#111">Borrar</a>
+                
                 </td>
             </tr>
         }
@@ -94,5 +95,12 @@
         await base.OnInitializedAsync();
 
         listaProyect = proyecserv.GetAllProyecto();
+    }
+    private async Task Borrar(string proyect)
+    {
+        await proyecserv.DeleteProyecto(proyect);
+        StateHasChanged();
+
+
     }
 }
