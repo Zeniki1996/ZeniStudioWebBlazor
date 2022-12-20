@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ProyectService>();// YO AGREGUÉ 
+builder.Services.AddScoped<CategoriaService>();// YO AGREGUÉ X2
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");// YO AGREGUÉ 
 //.Services.AddSingleton(connectionString);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

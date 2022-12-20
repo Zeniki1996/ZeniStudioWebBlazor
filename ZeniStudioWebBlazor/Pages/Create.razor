@@ -5,6 +5,8 @@
 
 @attribute [Authorize]
 @inject ProyectService proyecserv
+@inject CategoriaService categoriaservice
+@inject NavigationManager navegate
 
 
 <table class="table">
@@ -74,7 +76,7 @@
 
 
     public bool guardado = false;
-  
+
 
     Proyect proyecto = new();
     [Parameter]
@@ -82,17 +84,21 @@
 
     protected async Task SaveProyect()
     {
-        if (proyecto is null)
+        if (string.IsNullOrEmpty(proyecto.CodigoProyecto)){
             return;
+        }
 
-       // await proyecserv.SaveProyecto();
 
-       
         guardado = true;
+        await proyecserv.Crear(proyecto);
+        navegate.NavigateTo("/Proyecto", true);
     }
     protected async Task Recomendar()
     {
-      
+        if (!await categoriaservice.existe(proyecto.idCategoria)){
+            return;
+        }
+        proyecto = await proyecserv.Recomendar(proyecto); 
     }
     
 }

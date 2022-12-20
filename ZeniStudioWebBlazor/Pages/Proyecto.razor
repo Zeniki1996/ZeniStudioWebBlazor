@@ -5,7 +5,7 @@
 
 @attribute [Authorize]
 @inject ProyectService proyecserv
-
+@inject NavigationManager navegate
 <h3>Proyecto</h3>
 
 <p>
@@ -86,7 +86,7 @@
                 </td>
                 <td>-
                     <a href=@($"/EditProyect/{item.CodigoProyecto}")>Editar</a>
-                    <a @onclick="@(() => @Borrar(item.CodigoProyecto))" href="/Perfiluser" style="background-color=#111">Borrar</a>
+                    <a @onclick="@(() => @Borrar(item.CodigoProyecto))" href="/Proyecto" style="background-color=#111">Borrar</a>
                 
                 </td>
             </tr>
@@ -99,7 +99,7 @@
     List<Proyect> listaProyect;
     protected override async Task OnInitializedAsync()
     {
-    
+
         await base.OnInitializedAsync();
 
         listaProyect = proyecserv.GetAllProyecto();
@@ -108,6 +108,7 @@
     {
         await proyecserv.DeleteProyecto(proyect);
         StateHasChanged();
+        navegate.NavigateTo("/Proyecto", true);
 
 
     }
