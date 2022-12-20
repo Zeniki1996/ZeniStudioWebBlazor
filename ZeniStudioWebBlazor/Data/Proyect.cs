@@ -13,6 +13,7 @@ namespace ZeniStudioWebBlazor.Data
         [Key]
         public string CodigoProyecto { get; set; } 
         public string nombre { get; set; }
+        public Byte idCategoria { get; set; }
         public int idCliente { get; set; }
         public int idEstado { get; set; }
         public string prioridad { get; set; }

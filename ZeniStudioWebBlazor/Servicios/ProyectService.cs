@@ -28,9 +28,11 @@ namespace ZeniStudioWebBlazor.Servicios
             return context.Proyect.ToList();
         }
 
-        Task<Proyect> GetProyecto(string codigo)
+        public async Task<Proyect> GetProyecto(string codigo)
         {
-            throw new NotImplementedException();
+            var proyecto = await context.Proyect.FirstOrDefaultAsync(p => p.CodigoProyecto == codigo);
+            return proyecto ?? new() { CodigoProyecto = codigo};
+            
         }
 
         public async Task DeleteProyecto(string codigo)

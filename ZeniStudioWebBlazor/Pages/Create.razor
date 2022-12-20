@@ -1,28 +1,30 @@
-﻿@page "/EditProyect/{CodigoProyecto}"
+﻿@page "/create"
 @using Microsoft.AspNetCore.Authorization
 @using ZeniStudioWebBlazor.Data
 @using ZeniStudioWebBlazor.Servicios
 
 @attribute [Authorize]
 @inject ProyectService proyecserv
-@if (!cargado) {
-    <h2>Cargando</h2>
-}
 
 
 <table class="table">
-
     <tr>
-        <td>Código: @proyecto.CodigoProyecto</td>
+        <td>Categoría: </td>
+        <td><input type="text" @bind="proyecto.idCategoria" /> </td>
+        <td style="text-align:center">
+            <input type="submit" value="Recomendar" @onclick="Recomendar" />
+         
+        </td>
+    </tr>
+    <tr>
+        <td>Codigo:</td>
+        <td><input type="text" @bind="proyecto.CodigoProyecto" /> </td>
     </tr>
     <tr>
         <td>Nombre:</td>
         <td><input type="text" @bind="proyecto.nombre" /> </td>
     </tr>
-    <tr>
-        <td>Categoría: </td>
-        <td><input type="text" @bind="proyecto.idCategoria" /> </td>
-    </tr>
+
     <tr>
         <td>Cliente</td>
         <td><input type="text" @bind="proyecto.idCliente" /> </td>
@@ -72,18 +74,11 @@
 
 
     public bool guardado = false;
-    public bool cargado = false;
+  
 
     Proyect proyecto = new();
     [Parameter]
     public string CodigoProyecto{ get; set; }
-    protected override async Task OnInitializedAsync()
-    {
-        cargado = false;
-        await base.OnInitializedAsync();
-        proyecto = await proyecserv.GetProyecto(CodigoProyecto);
-        cargado = true;
-    }
 
     protected async Task SaveProyect()
     {
@@ -95,4 +90,9 @@
        
         guardado = true;
     }
+    protected async Task Recomendar()
+    {
+      
+    }
+    
 }

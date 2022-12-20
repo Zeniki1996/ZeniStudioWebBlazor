@@ -9,7 +9,9 @@
 <h3>Proyecto</h3>
 
 <p>
-    <a href=@($"//create/")>Create New</a>
+    <NavLink class="nav-link" href="create">
+        <span class="oi oi-list-rich" aria-hidden="true"></span> Crear Nuevo
+    </NavLink>
     
 </p>
 <table class="table">
@@ -23,6 +25,9 @@
             </th>
             <th>
                 Id Cliente
+            </th>
+            <th>
+                Id Categoria
             </th>
             <th>
                Id Estado
@@ -60,6 +65,9 @@
                 </td>
                 <td>
                     @item.idEstado
+                </td>
+                <td>
+                    @item.idCategoria
                 </td>
                 <td>
                     @item.prioridad
