@@ -87,8 +87,6 @@
         if (string.IsNullOrEmpty(proyecto.CodigoProyecto)){
             return;
         }
-
-
         guardado = true;
         await proyecserv.Crear(proyecto);
         navegate.NavigateTo("/Proyecto", true);
