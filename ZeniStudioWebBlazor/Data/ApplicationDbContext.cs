@@ -13,6 +13,7 @@ namespace ZeniStudioWebBlazor.Data
         }
         public DbSet<ZeniStudioWebBlazor.Data.Proyect> Proyect { get; set; }
         public DbSet<ZeniStudioWebBlazor.Data.Categoria> Categoria { get; set; }
+       
 
     }
 }

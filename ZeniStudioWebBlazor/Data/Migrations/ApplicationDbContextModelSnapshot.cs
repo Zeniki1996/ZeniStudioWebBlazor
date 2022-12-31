@@ -257,7 +257,7 @@ namespace ZeniStudioWebBlazor.Data.Migrations
 
                     b.HasKey("CodigoProyecto");
 
-                    b.ToTable("Proyect");
+                    b.ToTable("Proyect", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

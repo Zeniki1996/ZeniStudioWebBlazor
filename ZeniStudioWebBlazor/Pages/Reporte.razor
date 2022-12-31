@@ -1,0 +1,71 @@
+﻿@page "/Reporte"
+@using Microsoft.AspNetCore.Authorization
+@using ZeniStudioWebBlazor.Data
+@using ZeniStudioWebBlazor.Servicios
+
+@attribute [Authorize]
+@inject ProyectService proyecserv
+@inject CategoriaService catservice
+@inject NavigationManager navegate
+<h3>Reporte </h3>
+
+<tr>
+    <td>Fecha Inicio: </td>
+    <td><input type="text" @bind="@FechaInicio" /> </td>
+    <td>Fecha Fin: </td>
+    <td><input type="text" @bind="@FechaFin" /> </td>
+    
+    <button @onclick ="@Buscar">Aplicar Filtro  </button>
+ 
+   
+
+   
+</tr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Categoría 
+            </th>
+  
+            <th>
+                Proyectos Finalizados 
+            </th>
+          
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categorias in ListaCategorias)
+        {
+            <tr>
+             
+                <td>
+                   @categorias.nombre
+                </td>
+                <td>
+                  @categorias.Proyectos.Count()
+
+                </td>
+              
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    DateTime FechaInicio { get; set; }
+    DateTime FechaFin { get; set; }
+    int CantidadTotal { get; set; } = 0;
+
+    List<Categoriafiltrada> ListaCategorias = new();
+
+    private async Task Buscar ()
+    {
+        ListaCategorias = await catservice.RetornarLista(FechaInicio, FechaFin);
+        CantidadTotal = ListaCategorias.Select(c => c.Proyectos.Count()).Sum();
+    }
+
+}

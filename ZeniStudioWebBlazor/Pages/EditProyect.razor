@@ -5,6 +5,7 @@
 
 @attribute [Authorize]
 @inject ProyectService proyecserv
+@inject NavigationManager navegate
 @if (!cargado) {
     <h2>Cargando</h2>
 }
@@ -94,5 +95,6 @@
 
        
         guardado = true;
+        
     }
 }

@@ -2,12 +2,11 @@
 
 namespace ZeniStudioWebBlazor.Data
 {
-    public class Categoria
+    public class Categoriafiltrada
     {
         [Key]
-        public int idCategoria { get; set; }
+        public int? IdCategoria { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        
-    }
+        public List<Proyect> Proyectos { get; set; }
+     }
 }

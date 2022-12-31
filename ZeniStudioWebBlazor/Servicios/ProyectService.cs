@@ -66,7 +66,17 @@ namespace ZeniStudioWebBlazor.Servicios
                 }
           
             }
-            proyectosPosibles = proyectosPosibles.OrderByDescending(p => p.fechaCreacion).ToList();
+            //proyectosPosibles = proyectosPosibles.OrderByDescending(p => p.fechaCreacion).ToList();
+            proyectosPosibles = proyectosPosibles.OrderBy(p =>
+            {
+                var dias = p.fechaFin - p.fechaInicio;
+                if (dias is null)
+                {
+                    return 99; //En caso de que un proyecto aun no ha acabado, lanza un numero muy alto para no ser tomado en cuenta
+                }
+                return dias?.Days;
+            }).ToList();
+
             Proyect?  proyectoRecomendado = null;
             if (proyectosPosibles.Count > 0)
             {
